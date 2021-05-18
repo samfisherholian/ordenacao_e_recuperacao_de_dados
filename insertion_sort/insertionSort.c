@@ -34,6 +34,8 @@ void insertionsort(int arr[], int size){
 
             HOLE--;
 
+            
+
         }
 
         arr[HOLE] = VALUE_IN_POSITION;
