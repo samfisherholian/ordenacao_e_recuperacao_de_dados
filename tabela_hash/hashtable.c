@@ -86,7 +86,7 @@ int main(){
 
     insere(25, "dario", individuos);
 
-    insere(24, "jessica", individuos);
+    insere(24, "andre", individuos);
 
     insere(21, "samuel", individuos);
 
