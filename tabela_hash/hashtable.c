@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define SIZE 21
 
@@ -20,6 +21,12 @@ struct pessoa{
 PESSOA* array[SIZE];
 
 int hash(char* key){
+
+    //srand(time(NULL));
+
+    //int radom1 = rand() % 101;
+
+    //int radom2 = rand() % 101;
     
     int len = strnlen(key, 256);
 
@@ -28,8 +35,10 @@ int hash(char* key){
     for(int i = 0; i < len; i++){
 
         value += key[i];
-
+        
         value = (value * key[i] % SIZE);
+
+        //int hash_value = ((radom1*value + radom2)%101) % SIZE;
 
     }
 
