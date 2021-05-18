@@ -33,6 +33,8 @@ int hash(char* key){
 
     }
 
+    return value;
+
 }
 
 
@@ -50,7 +52,6 @@ void insere(int idade, char* key, PESSOA* head){
 
     array[index] = items;
 
-
 }
 
 void print_list(){
@@ -59,7 +60,7 @@ void print_list(){
         
         if(array[i] != NULL){
 
-            printf("%i, %s", array[i]->idade, array[i]->key);
+            printf("[ %i, %s ]", array[i]->idade, array[i]->key);
 
         }else{
 
@@ -80,6 +81,14 @@ int main(){
     insere(23, "tiago", individuos);
 
     insere(20, "emerson", individuos);
+
+    insere(21, "lucas", individuos);
+
+    insere(25, "dario", individuos);
+
+    insere(24, "jessica", individuos);
+
+    insere(21, "samuel", individuos);
 
     print_list();
 
