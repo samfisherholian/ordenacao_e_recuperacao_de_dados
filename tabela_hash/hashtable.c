@@ -73,25 +73,45 @@ void print_list(){
  
 }
 
+int search(char * key){
+
+    int index = hash(key);
+
+    while(array[index] != NULL){
+
+        if(strcmp(array[index]->key, key) == 0){
+            
+            return 1;
+        }
+
+        array[index] = array[index]->next;
+
+    }
+
+
+}
+
 
 int main(){
 
     PESSOA* individuos;
 
-    insere(23, "tiago", individuos);
+    insere(50, "tiago", individuos);
 
-    insere(20, "emerson", individuos);
+    insere(38, "emerson", individuos);
 
     insere(21, "lucas", individuos);
 
-    insere(25, "dario", individuos);
+    insere(42, "dario", individuos);
 
-    insere(24, "andre", individuos);
+    insere(49, "andre", individuos);
 
-    insere(21, "samuel", individuos);
+    insere(31, "samuel", individuos);
 
     print_list();
 
+
+   search("tiago")? printf("%s", "True\n"):printf("%s\n", "False");
 
 
 
