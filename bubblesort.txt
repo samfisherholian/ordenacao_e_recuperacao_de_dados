@@ -1,0 +1,36 @@
+A posicão atual compara com a proxima, se a posição atual for maior que o 
+valor da proxima posição então ambos são trocados
+
+bubblesort(A[], tamanho){
+
+    for i <- 0 para tamanho-1{
+
+        
+        troca <- 0
+        // se a posição atual do array for maior que a proxima então ambos
+        // trocam de posição
+        for j <- 1 para tamanho - k -1{
+
+            if(A[j] > A[j + 1]) then {
+
+                temp <- A[j]
+
+                A[j] <- A[j+1]
+
+                A[j + 1] <- temp
+
+                troca <- 1
+            }
+
+            if(troca = 0) then {
+
+                break
+
+            }
+
+        }
+
+    }
+
+
+}
