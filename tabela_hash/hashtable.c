@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-#define SIZE 21
+#define SIZE 23
 
 typedef struct pessoa PESSOA;
 
@@ -22,9 +22,17 @@ PESSOA* array[SIZE];
 
 int hash(char* key){
 
-    //srand(time(NULL));
+    srand(time(NULL));
 
-    //int radom1 = rand() % 101;
+    int p = 65543; 
+
+    int temp1 = p;
+    int temp2 = p;
+
+    int a = rand() % (temp1-1) + 1;
+
+    int b = rand() %  (temp2-1);
+    
 
     //int radom2 = rand() % 101;
     
@@ -36,18 +44,22 @@ int hash(char* key){
 
         value += key[i];
         
-        value = (value * key[i] % SIZE);
+        //value = (value * key[i]% SIZE);
 
         //int hash_value = ((radom1*value + radom2)%101) % SIZE;
 
     }
 
-    return value;
+    int hash_value = ((a*value + b)%p) % SIZE;
+
+    //printf("a hash eh %i", value);
+
+    return hash_value;
 
 }
 
 
-void insere(int idade, char* key, PESSOA* head){
+void insere(int idade, char* key){
 
     PESSOA* items = (PESSOA*)malloc(sizeof(PESSOA));
 
@@ -65,16 +77,22 @@ void insere(int idade, char* key, PESSOA* head){
 
 void print_list(){
 
+
+    
     for(int i = 0; i< SIZE;i++){
-        
-        if(array[i] != NULL){
 
-            printf("[ %i, %s ]", array[i]->idade, array[i]->key);
+        PESSOA* aux = array[i];    
 
-        }else{
+        while(aux != NULL){
 
-            printf(" ~~~ ");
+            printf("[ %i, %s ]", aux->idade, aux->key);
+
+            aux = aux->next;
+
         }
+        
+            printf(" ~~~ ");
+    
 
     }
 
@@ -86,15 +104,17 @@ int search(char * key){
 
     int index = hash(key);
 
-    while(array[index] != NULL){
+    PESSOA* list = array[index];
 
-        if(strcmp(array[index]->key, key) == 0){
-            
-            return 1;
-        }
+    while(list != NULL){
 
-        array[index] = array[index]->next;
+            if(strcmp(list->key, key) == 0){
+                
+                return 1;
+            }
 
+        list = list->next;
+        
     }
 
 
@@ -103,26 +123,60 @@ int search(char * key){
 
 int main(){
 
-    PESSOA* individuos;
+/*
+    printf("hash eh %i\n",hash("tiago"));
 
-    insere(50, "tiago", individuos);
+    printf("hash eh %i\n",hash("emerson"));
 
-    insere(38, "emerson", individuos);
+    printf("hash eh %i\n",hash("lucas"));
 
-    insere(21, "lucas", individuos);
+    printf("hash eh %i\n",hash("dario"));
 
-    insere(42, "dario", individuos);
+    printf("hash eh %i\n",hash("andre"));
 
-    insere(49, "andre", individuos);
+    printf("hash eh %i\n",hash("samuel"));
 
-    insere(31, "samuel", individuos);
+    printf("hash eh %i\n",hash("luiz"));
+
+  */  
+    //printf("hash eh %i\n",hash("jessicadossantos"));
+
+
+
+
+
+    insere(50, "tiago");
+
+    insere(38, "emerson");
+
+    insere(21, "lucas");
+
+    insere(42, "dario");
+
+    insere(49, "andre");
+
+    insere(31, "samuel");
+
+    insere(70, "luiz");
+
+    insere(80,"josney");
+
+    insere(48, "severina");
+
+    insere(50, "brisanet");
 
     print_list();
 
 
    search("tiago")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("emerson")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("lucas")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("dario")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("andre")? printf("%s", "True\n"):printf("%s\n", "False"); 
+   search("samuel")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("luiz")? printf("%s", "True\n"):printf("%s\n", "False"); 
 
-
+   search("josney")? printf("%s", "True\n"):printf("%s\n", "False");
 
     return 0;
 }
