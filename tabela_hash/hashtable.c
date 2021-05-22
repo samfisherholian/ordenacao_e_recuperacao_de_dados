@@ -79,20 +79,25 @@ void print_list(){
 
 
     
-    for(int i = 0; i< SIZE;i++){
+    for(int i = 0; i < SIZE;i++){
 
         PESSOA* aux = array[i];    
 
-        while(aux != NULL){
+        if(aux == NULL){
 
-            printf("[ %i, %s ]", aux->idade, aux->key);
-
-            aux = aux->next;
-
-        }
-        
             printf(" ~~~ ");
-    
+
+        }else{
+
+            while(aux != NULL){
+
+                printf("[ %i, %s ]", aux->idade, aux->key);
+
+                aux = aux->next;
+
+            }
+       
+        }
 
     }
 
@@ -145,38 +150,36 @@ int main(){
 
 
 
-    insere(50, "tiago");
+    insere(50, "joao");
 
-    insere(38, "emerson");
+    insere(38, "maria");
 
-    insere(21, "lucas");
+    insere(21, "jose");
 
-    insere(42, "dario");
+    insere(42, "carlos");
 
-    insere(49, "andre");
+    insere(49, "adriano");
 
-    insere(31, "samuel");
+    insere(31, "albuquerque");
 
-    insere(70, "luiz");
+    insere(70, "silvana");
 
-    insere(80,"josney");
-
-    insere(48, "severina");
-
-    insere(50, "brisanet");
+    insere(80,"roberto");
 
     print_list();
 
 
-   search("tiago")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("emerson")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("lucas")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("dario")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("andre")? printf("%s", "True\n"):printf("%s\n", "False"); 
-   search("samuel")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("luiz")? printf("%s", "True\n"):printf("%s\n", "False"); 
+   search("joao")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("maria")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("jose")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("carlos")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("adriano")? printf("%s", "True\n"):printf("%s\n", "False"); 
+   search("albuquerque")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("silvana")? printf("%s", "True\n"):printf("%s\n", "False"); 
+   search("roberto")? printf("%s", "True\n"):printf("%s\n", "False");
 
    search("josney")? printf("%s", "True\n"):printf("%s\n", "False");
+   search("eduardo")? printf("%s", "True\n"):printf("%s\n", "False");
 
     return 0;
 }
