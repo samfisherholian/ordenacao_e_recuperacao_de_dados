@@ -33,9 +33,6 @@ int hash(char* key){
 
     int b = rand() %  (temp2-1);
     
-
-    //int radom2 = rand() % 101;
-    
     int len = strnlen(key, 256);
 
     int value = 0;
@@ -43,25 +40,26 @@ int hash(char* key){
     for(int i = 0; i < len; i++){
 
         value += key[i];
-        
-        //value = (value * key[i]% SIZE);
-
-        //int hash_value = ((radom1*value + radom2)%101) % SIZE;
 
     }
 
     int hash_value = ((a*value + b)%p) % SIZE;
-
-    //printf("a hash eh %i", value);
 
     return hash_value;
 
 }
 
 
-void insere(int idade, char* key){
+int insere(int idade, char* key){
 
     PESSOA* items = (PESSOA*)malloc(sizeof(PESSOA));
+
+    if(items == NULL){
+
+        printf("ERRO");
+
+        return 0; 
+    }
 
     int index = hash(key);
 
@@ -76,8 +74,6 @@ void insere(int idade, char* key){
 }
 
 void print_list(){
-
-
     
     for(int i = 0; i < SIZE;i++){
 
@@ -110,6 +106,7 @@ int search(char * key){
     int index = hash(key);
 
     PESSOA* list = array[index];
+
 
     while(list != NULL){
 
