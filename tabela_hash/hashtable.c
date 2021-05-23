@@ -2,24 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "hashtable.h"
 
 #define SIZE 23
 
-typedef struct pessoa PESSOA;
-
-struct pessoa{
-    
-    char key[256];
-
-    int idade;
-
-    struct pessoa* next;
-
-};
-
-
+// array de pessoas
 PESSOA* array[SIZE];
 
+// gera uma hash universal a partir do somatorio de caracteres da string
 int hash(char* key){
 
     srand(time(NULL));
@@ -27,6 +17,7 @@ int hash(char* key){
     int p = 65543; 
 
     int temp1 = p;
+
     int temp2 = p;
 
     int a = rand() % (temp1-1) + 1;
@@ -49,7 +40,8 @@ int hash(char* key){
 
 }
 
-
+// inseres as pessoas, nome e idade
+// a lista recebe uma pessoa no indice do array em que a chave foi gerada
 int insere(int idade, char* key){
 
     PESSOA* items = (PESSOA*)malloc(sizeof(PESSOA));
@@ -73,6 +65,7 @@ int insere(int idade, char* key){
 
 }
 
+// imprime todos os elementos da lista
 void print_list(){
     
     for(int i = 0; i < SIZE;i++){
@@ -100,13 +93,12 @@ void print_list(){
     printf("\n");
  
 }
-
+// procura por um elemento na lista, usando a chave
 int search(char * key){
 
     int index = hash(key);
 
     PESSOA* list = array[index];
-
 
     while(list != NULL){
 
@@ -120,63 +112,4 @@ int search(char * key){
     }
 
 
-}
-
-
-int main(){
-
-/*
-    printf("hash eh %i\n",hash("tiago"));
-
-    printf("hash eh %i\n",hash("emerson"));
-
-    printf("hash eh %i\n",hash("lucas"));
-
-    printf("hash eh %i\n",hash("dario"));
-
-    printf("hash eh %i\n",hash("andre"));
-
-    printf("hash eh %i\n",hash("samuel"));
-
-    printf("hash eh %i\n",hash("luiz"));
-
-  */  
-    //printf("hash eh %i\n",hash("jessicadossantos"));
-
-
-
-
-
-    insere(50, "joao");
-
-    insere(38, "maria");
-
-    insere(21, "jose");
-
-    insere(42, "carlos");
-
-    insere(49, "adriano");
-
-    insere(31, "albuquerque");
-
-    insere(70, "silvana");
-
-    insere(80,"roberto");
-
-    print_list();
-
-
-   search("joao")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("maria")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("jose")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("carlos")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("adriano")? printf("%s", "True\n"):printf("%s\n", "False"); 
-   search("albuquerque")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("silvana")? printf("%s", "True\n"):printf("%s\n", "False"); 
-   search("roberto")? printf("%s", "True\n"):printf("%s\n", "False");
-
-   search("josney")? printf("%s", "True\n"):printf("%s\n", "False");
-   search("eduardo")? printf("%s", "True\n"):printf("%s\n", "False");
-
-    return 0;
 }
