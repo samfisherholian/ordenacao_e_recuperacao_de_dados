@@ -58,7 +58,7 @@ int insere(int idade, char* key){
     items -> idade = idade;
 
     strcpy(items->key, key);
-
+    
     items -> next = array[index];
 
     array[index] = items;
